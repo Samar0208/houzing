@@ -1,7 +1,7 @@
-import { useID } from "react";
+import { useId } from "react";
 
 const useUniqueId = () => {
-  const id = useID();
+  const id = useId();
   return id;
 };
 
