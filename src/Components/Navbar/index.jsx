@@ -1,8 +1,10 @@
+
+
 import React from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import {navbar} from "../../Utils/Navbar"
 import {Container, Link,  Logo, Main, Section, Wrapper} from "./style"
-
+import Button from '../Generic/Button'
 
 
 export const Home = () => {
@@ -17,16 +19,20 @@ export const Home = () => {
           <Logo/><h3>Housing</h3>
           </Section>
          <Section>
-          {navbar .map(({title, path},index)=>{
-            return <Link className={({isActive})=> isActive && "active"}
+          {navbar .map(({title, path, hidden},index)=>{
+            return (
+            !hidden && (
+            <Link className={({isActive})=> isActive && "active"}
             key={index} to={path}>
               {title}
               </Link>
+              )
+          );
           }
           )}
          </Section>
          <Section>
-          <button>Sign In</button>
+        <Button onClick={()=> navigate("/signin")} type={"dark"}>Sign In</Button>
          </Section>
         </Wrapper>
         </Main>
